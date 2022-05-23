@@ -1,0 +1,15 @@
+<Meter>:
+    name: "meter"
+    MDBoxLayout:
+        size_hint: 1, 1
+        orientation: "vertical"
+        on_touch_down:
+            root.setup_points(args[1])
+            
+        AndroidCamera:
+            id: camera
+            resolution: self.resolution
+            allow_stretch: True
+            keep_ratio: False
+            play: False
+        
