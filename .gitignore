@@ -1,0 +1,5 @@
+
+# directories
+/widgets/__pycache__
+.buildozer
+/bin
