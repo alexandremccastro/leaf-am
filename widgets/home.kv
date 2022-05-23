@@ -1,0 +1,21 @@
+<Home>:
+    name: 'home'
+    
+    MDBoxLayout:
+        orientation: "vertical"
+        MDBoxLayout:
+            orientation: "vertical"
+            spacing: dp(16)
+            padding: dp(16)
+            MDFillRoundFlatButton:
+                text: "Nova Medição"
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                size_hint_x: 0.8
+                on_release:
+                    root.manager.current = "setup"
+            MDFillRoundFlatButton:
+                text: "Obter Ajuda"
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                size_hint_x: 0.8
+
+        
