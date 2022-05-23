@@ -1,0 +1,65 @@
+<CustomOneLineItem>:
+    md_bg_color: 0, 0, 0, .05
+    orientation: "horizontal"
+    MDLabel:
+        id: number
+        markup: True
+        font_size: dp(16)
+        halign: "center"
+        size_hint_x: 1
+    MDLabel:
+        id: area
+        markup: True
+        font_size: dp(16)
+        halign: "center"
+        size_hint_x: 1
+        line_height: .8
+    
+
+<Details>:
+    name: "details"
+    id: detailsScreen
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: dp(16)
+        spacing: dp(16)
+        MDLabel:
+            text: "Sua analize foi finalizada!"
+            halign: "center"
+            font_size: dp(16)
+            size_hint: None, None
+            size_hint_x: 1
+            halign: "center"
+            size: dp(60), dp(60)
+            text_size: dp(60), dp(60)
+            
+        MDLabel:
+            text: str(round(root.total_leaves_area, 2))
+            font_size: dp(60)
+            halign: "center"
+            size_hint: None, None
+            size_hint_x: 1
+            halign: "center"
+            size: dp(60), dp(60)
+        ScrollView:
+            MDGridLayout:
+                id: list_items
+                cols: 1
+                height: self.minimum_height
+                row_default_height: dp(60)
+                size_hint_y: None
+                padding: 15, 15
+                spacing: 15, 15
+        MDFillRoundFlatButton:
+            text: "Exportar Analize"
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            size_hint_x: 0.8
+            on_release:
+                detailsScreen.open_file_manager()
+            
+        MDFillRoundFlatButton:
+            text: "Ir para Inicio"
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            size_hint_x: 0.8
+            on_release:
+                detailsScreen.manager.current = "home"
