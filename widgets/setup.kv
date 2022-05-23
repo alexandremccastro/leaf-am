@@ -1,0 +1,35 @@
+<Setup>:
+    name: 'setup'
+    MDBoxLayout:
+        padding: dp(16)
+        orientation: "vertical"
+        Image:
+            source: "./assets/checkerboard.png"
+            size_hint: None, None
+            size_hint_x: 1
+            allow_stretch: True
+            size: dp(100), dp(100)
+        MDLabel:
+            halign: "center"
+            font_size: dp(24)
+            text: "Calibrar Camera"
+            size_hint: None, None
+            size_hint_x: 1
+            halign: "center"
+            size: dp(40), dp(40)
+        MDLabel:
+            halign: "center"
+            font_size: dp(16)
+            text: "Antes de iniciar uma medição é necessário calibrar a câmera, para resultados precisos certifique-se de usar um calibrador valido."
+            size_hint: None, None
+            size_hint_x: 1
+            halign: "center"
+            size: dp(80), dp(80)
+
+        Widget:
+        MDFillRoundFlatButton:
+            text: "Próximo"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            size_hint_x: 0.8
+            on_release:
+                root.manager.current = "meter"
