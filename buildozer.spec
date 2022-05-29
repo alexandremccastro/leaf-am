@@ -4,13 +4,13 @@
 title = LeafAM
 
 # (str) Package name
-package.name = leafareameter
+package.name = leafam
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = com.alexandrecastro
 
 # (str) Source code where the main.py live
-source.dir = .
+source.dir = ./src
 
 # (list) Source files to include (let empty to include all the files)
 source.include_exts = py,png,jpg,kv,atlas
