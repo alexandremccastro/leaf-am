@@ -2,8 +2,8 @@
 from kivymd.uix.screen import MDScreen
 from kivy.lang.builder import Builder
 
-Builder.load_file('./widgets/setup.kv')
+Builder.load_file('./layout/home.kv')
 
-class Setup(MDScreen):
+class Home(MDScreen):
     def __init__(self, **kw):
         super().__init__(**kw)

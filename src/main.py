@@ -3,10 +3,10 @@ from kivymd.app import MDApp
 from kivy.uix.screenmanager import ScreenManager, SlideTransition
 from kivy.core.window import Window
 from kivy.properties import ObjectProperty, BooleanProperty
-from widgets.home import Home
-from widgets.setup import Setup
-from widgets.meter import Meter
-from widgets.details import Details
+from layout.home import Home
+from layout.setup import Setup
+from layout.meter import Meter
+from layout.details import Details
 from kivy.utils import platform
 from kivy.clock import Clock
 from kivy.core.window import Window
@@ -82,7 +82,7 @@ class LeafAMApp(MDApp):
                 if self.closing == True:
                     self.stop()
                 else:
-                    self.snackbar = Snackbar(text="Pressione novamente para sair.")
+                    self.snackbar = Snackbar(text="Pressione \"Voltar\" novamente para sair.")
                     self.snackbar.bind(on_dismiss=self.unset_close_status)
                     self.snackbar.open()
                     self.closing = True

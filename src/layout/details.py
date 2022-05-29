@@ -9,7 +9,7 @@ from kivymd.uix.filemanager import MDFileManager
 from kivymd.uix.snackbar import Snackbar
 from kivy.utils import platform
 
-Builder.load_file("./widgets/details.kv")
+Builder.load_file("./layout/details.kv")
 
 class CustomOneLineItem(MDBoxLayout, RectangularRippleBehavior):
     def __init__(self, **kwargs):

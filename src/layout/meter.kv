@@ -1,15 +1,16 @@
 <Meter>:
+    id: meter_screen
     name: "meter"
     MDBoxLayout:
         size_hint: 1, 1
         orientation: "vertical"
         on_touch_down:
-            root.setup_points(args[1])
+            meter_screen.setup_points(args[1])
             
-        AndroidCamera:
+        LeafCamera:
             id: camera
             resolution: self.resolution
             allow_stretch: True
-            keep_ratio: False
+            keep_ratio: True
             play: False
         
