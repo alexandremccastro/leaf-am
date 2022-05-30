@@ -2,10 +2,13 @@
 from abc import abstractmethod
 from kivy.uix.camera import Camera
 from kivy.graphics.texture import Texture
+from kivy.properties import ListProperty
 import numpy as np
 import cv2
 
 class BaseCamera(Camera):
+    resolution = ListProperty([1280, 720])
+
     def on_play(self, instance, value):
         if not self._camera:
             return
@@ -44,5 +47,5 @@ class BaseCamera(Camera):
             self.texture.blit_buffer(buf, colorfmt='rgb', bufferfmt='ubyte')
 
     @abstractmethod
-    def countour_detect(self, frame):
+    def contour_detect(self, frame):
       pass
