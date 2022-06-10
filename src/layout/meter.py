@@ -1,7 +1,7 @@
 
 from kivy.lang.builder import Builder
 from kivymd.uix.screen import MDScreen
-from core.widgets.leaf_camera import LeafCamera
+from core.widgets.android_camera import AndroidCamera
 
 Builder.load_file('./layout/meter.kv')
 

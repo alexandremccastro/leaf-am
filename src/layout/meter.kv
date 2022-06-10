@@ -7,10 +7,10 @@
         on_touch_down:
             meter_screen.setup_points(args[1])
             
-        LeafCamera:
+        AndroidCamera:
             id: camera
             resolution: self.resolution
             allow_stretch: True
-            keep_ratio: True
+            keep_ratio: False
             play: False
         
