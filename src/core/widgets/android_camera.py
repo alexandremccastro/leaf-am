@@ -10,7 +10,7 @@ from core.detectors.leaf_detector import LeafDetector
 from core.graphics.point2d import Point2D
 from core.widgets.base_camera import BaseCamera
 
-class LeafCamera(BaseCamera):
+class AndroidCamera(BaseCamera):
     areas_list = ListProperty([])
     is_calibrated = BooleanProperty(False)
     is_able_to_calibrate = BooleanProperty(False)
@@ -26,7 +26,6 @@ class LeafCamera(BaseCamera):
 
     total_leaf_area_label = ObjectProperty(None)
     calibration_pad_area = NumericProperty(0)
-    detected_calib_count = NumericProperty(0)
     calibration_area_in_cm2 = (7 * 0.5) * (9 * 0.5) # 5mm2 for each square
 
     leaf_detector = LeafDetector()
@@ -65,10 +64,11 @@ class LeafCamera(BaseCamera):
     def detect_leaves(self, frame):
         leaf_contour = self.leaf_detector.get_contour(frame, self.selected_point)
 
-        if not leaf_contour is None and self.current_object_area == 0:
+        if not leaf_contour is None:
             self.draw_contour(frame, leaf_contour)
-            self.current_object_area = cv2.contourArea(leaf_contour)
-            self.show_current_object_area()
+            if self.current_object_area == 0:
+                self.current_object_area = cv2.contourArea(leaf_contour)
+                self.show_current_object_area()
 
     def get_current_leaf_area(self):
         return self.current_object_area / self.calibration_pad_area * self.calibration_area_in_cm2
