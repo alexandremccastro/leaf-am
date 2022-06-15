@@ -7,20 +7,21 @@ from core.graphics.point2d import Point2D
 
 class LeafDetector(ContourDetector):
   def get_contour(self, frame, point):
-    blur = cv2.GaussianBlur(frame, (5, 5), 1)
-    hsv = cv2.cvtColor(blur, cv2.COLOR_BGR2HSV)
+    blur = cv2.blur(frame, (3,3))
+    lab = cv2.cvtColor(blur, cv2.COLOR_BGR2LAB)
 
-    # threshold of green in HSV space
-    lower_green = np.array([13, 40, 14])
-    upper_green = np.array([255, 255, 255])
+    # only use the a channel to find objects
+    a_channel = lab[:,:,1]
 
-    # preparing the mask to overlay
-    mask = cv2.inRange(hsv, lower_green, upper_green)
+    rt, th = cv2.threshold(a_channel,105,255,cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
     kernel = cv2.getStructuringElement(cv2.MORPH_ERODE, (3,3))
-    close = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel, iterations=3)
+    close = cv2.morphologyEx(th, cv2.MORPH_CLOSE, kernel, iterations=3)
 
-    # find contours
-    contours, _ = cv2.findContours(close, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    # mask the result with the original image
+    masked = cv2.bitwise_and(frame, frame, mask = close)
+    gray = cv2.cvtColor(masked, cv2.COLOR_BGR2GRAY)
+
+    contours, _ = cv2.findContours(gray, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     return self.get_selected_contour(point, contours)
 
   # returns the countor that intersects the given point
