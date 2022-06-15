@@ -26,7 +26,7 @@ class AndroidCamera(BaseCamera):
 
     total_leaf_area_label = ObjectProperty(None)
     calibration_pad_area = NumericProperty(0)
-    calibration_area_in_cm2 = (7 * 0.5) * (9 * 0.5) # 5mm2 for each square
+    calibration_area_in_cm2 = (4.3) * (3.4) # 5mm2 for each square
 
     leaf_detector = LeafDetector()
     board_detector = BoardDetector()
