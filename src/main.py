@@ -3,15 +3,17 @@ from kivymd.app import MDApp
 from kivy.uix.screenmanager import ScreenManager, SlideTransition
 from kivy.core.window import Window
 from kivy.properties import ObjectProperty, BooleanProperty
-from layout.home import Home
-from layout.setup import Setup
-from layout.meter import Meter
-from layout.details import Details
 from kivy.utils import platform
 from kivy.clock import Clock
 from kivy.core.window import Window
 from kivymd.uix.snackbar import Snackbar
 from kivy.clock import mainthread
+
+from layout.help import Help
+from layout.home import Home
+from layout.setup import Setup
+from layout.meter import Meter
+from layout.details import Details
 
 Clock.max_iteration = 10
 
@@ -62,6 +64,7 @@ class LeafAMApp(MDApp):
     
     def setup_screens(self, manager):
         manager.add_widget(Home())
+        manager.add_widget(Help())
         manager.add_widget(Setup())
         manager.add_widget(Meter())
         manager.add_widget(Details())

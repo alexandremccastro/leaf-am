@@ -1,0 +1,55 @@
+<Help>:
+  name: "help"
+
+  ScrollView:
+    MDGridLayout:
+      id: box
+      cols: 1
+      rows: 10
+      height: self.minimum_height
+      row_default_height: dp(150)
+      size_hint_y: None
+      padding: dp(32), dp(32)
+      spacing: 15, 15
+
+      MDLabel:
+        font_size: dp(16)
+        text: "1. Va até o site https://calib.io, em seguida acesse o menu \"Pattern Generator\" conforme demarcado na imagem abaixo, após clicar você será redirecionado para outra tela."
+        size_hint_x: 1
+        on_ref_press:
+          import webbrowser
+          webbrowser.open(args[1])
+
+      Image:
+        source: "./assets/help/first-step.png"
+        size_hint: None, None
+        size_hint_x: 1
+        allow_stretch: True
+        size: dp(150), dp(150)
+
+
+      MDLabel:
+        font_size: dp(16)
+        text: "2. Na tela a seguir especifique no campo \"Target Type\" a opção \"Checkerboard\". Altere o valor do campo \"Rows\" para \"9\", e valor do campo \"Checker Width [mm]\" para \"5\". Em seguida clique na opção \"Save calibration board as PDF\"."
+ 
+      Image:
+        source: "./assets/help/second-step.png"
+        size_hint: None, None
+        size_hint_x: 1
+        allow_stretch: True
+        size: dp(150), dp(150)
+
+      MDLabel:
+        font_size: dp(16)
+        text: "Caso tenha seguido os passos corretamente agora você possui um arquivo com o seguinte conteúdo:"
+
+      Image:
+        source: "./assets/help/third-step.png"
+        size_hint: None, None
+        size_hint_x: 1
+        allow_stretch: True
+        size: dp(150), dp(150)
+
+      MDLabel:
+        font_size: dp(16)
+        text: "3. Por último, basta apenas você imprimir o calibrador utilizando uma impressora comum e começar a utilizar aplicativo livremente."
